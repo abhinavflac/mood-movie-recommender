@@ -1,0 +1,102 @@
+# ============================================
+# Movie Mood Recommender - Configuration
+# ============================================
+
+project:
+  name: "Movie Mood Recommender"
+  version: "0.1.0"
+  description: "Emotion-based movie recommendation system"
+
+# Data Collection Settings
+data_collection:
+  tmdb:
+    base_url: "https://api.themoviedb.org/3"
+    image_base_url: "https://image.tmdb.org/t/p"
+    rate_limit_per_second: 4  # TMDB allows ~40 requests per 10 seconds
+    
+  imdb:
+    base_url: "https://www.imdb.com"
+    request_delay: 1.0  # Seconds between requests (be respectful!)
+    
+  reviews:
+    sources: ["imdb", "tmdb"]
+    min_reviews_per_movie: 20
+    max_reviews_per_movie: 300
+    min_review_length: 50  # characters
+
+# Target Data Size
+targets:
+  movies: 5000
+  reviews_per_movie: 200
+
+# Database Settings
+database:
+  # Set in .env file
+  pool_size: 5
+  max_overflow: 10
+
+# File Paths
+paths:
+  data_dir: "data"
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  embeddings: "data/embeddings"
+  models: "models"
+  logs: "logs"
+
+# Emotion Categories
+emotions:
+  categories:
+    - name: "cathartic_sadness"
+      display: "Cathartic Sadness"
+      emoji: "😢"
+      
+    - name: "thrilling_tension"
+      display: "Thrilling Tension"
+      emoji: "😰"
+      
+    - name: "mind_blown"
+      display: "Mind-Blown"
+      emoji: "🤯"
+      
+    - name: "pure_joy"
+      display: "Pure Joy"
+      emoji: "😂"
+      
+    - name: "bittersweet_hope"
+      display: "Bittersweet Hope"
+      emoji: "🥹"
+      
+    - name: "righteous_anger"
+      display: "Righteous Anger"
+      emoji: "😤"
+      
+    - name: "cozy_comfort"
+      display: "Cozy Comfort"
+      emoji: "🫠"
+      
+    - name: "controlled_fear"
+      display: "Controlled Fear"
+      emoji: "😱"
+      
+    - name: "intellectual_stimulation"
+      display: "Intellectual Stimulation"
+      emoji: "🤔"
+      
+    - name: "romantic_warmth"
+      display: "Romantic Warmth"
+      emoji: "❤️‍🔥"
+      
+    - name: "triumphant_inspired"
+      display: "Triumphant & Inspired"
+      emoji: "🏆"
+      
+    - name: "awe_wonder"
+      display: "Awe & Wonder"
+      emoji: "🌌"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {message}"
+  rotation: "10 MB"
