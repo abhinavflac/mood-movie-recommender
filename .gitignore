@@ -1,13 +1,18 @@
 # ============================================
-# Movie Mood Recommender - Git Ignore
+# MovieMood - Git Ignore
 # ============================================
 
+# ===================
 # Environment & Secrets
+# ===================
 .env
-*.env.local
+.env.local
+.env.production
 secrets/
 
+# ===================
 # Python
+# ===================
 __pycache__/
 *.py[cod]
 *$py.class
@@ -28,64 +33,94 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
-# Virtual Environment
 venv/
-env/
-ENV/
 .venv/
+env/
 
+# ===================
 # IDE
+# ===================
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
-.project
-.pydevproject
-.settings/
 
-# Jupyter
+# ===================
+# Jupyter Notebooks
+# ===================
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# Data Files (too large for git)
+# ===================
+# Data Files (large)
+# ===================
 data/raw/
 data/processed/
 data/embeddings/
 *.parquet
 *.csv
-*.json
-!config/*.json
+!frontend/**/*.csv
+!.env.example
 
-# Models (too large for git)
+# ===================
+# Models (large)
+# ===================
 models/
 *.pt
 *.pth
 *.bin
 *.h5
 *.pkl
+*.onnx
 
+# ===================
 # Logs
+# ===================
 logs/
 *.log
 
+# ===================
 # Database
+# ===================
 *.db
 *.sqlite
 *.sqlite3
 
+# ===================
 # OS Files
+# ===================
 .DS_Store
 Thumbs.db
 desktop.ini
 
+# ===================
 # Testing
+# ===================
 .pytest_cache/
 .coverage
 htmlcov/
 .tox/
 
+# ===================
 # Build
+# ===================
 *.manifest
 *.spec
+
+# ===================
+# Node.js (Frontend)
+# ===================
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.cache/
+
+# But include config files
+!frontend/package.json
+!frontend/package-lock.json
+!frontend/tsconfig.json
+!frontend/tailwind.config.ts
+!frontend/postcss.config.js
+!frontend/next.config.js
+!vercel.json
